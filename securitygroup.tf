@@ -17,25 +17,25 @@ resource "aws_security_group" "neo4jinternal" {
     description = "Allow neo4j internal inbound traffic"
     vpc_id      = "${aws_vpc.main.id}"
     ingress {
-        from_port   = 0
+        from_port   = 7687
         to_port     = 7687
         protocol    = "tcp"
         cidr_blocks = ["172.21.0.0/16"]
     }
     ingress {
-        from_port   = 0
+        from_port   = 7474
         to_port     = 7474
         protocol    = "tcp"
         cidr_blocks = ["172.21.0.0/16"]
     }
     ingress {
-        from_port   = 0
+        from_port   = 7473
         to_port     = 7473
         protocol    = "tcp"
         cidr_blocks = ["172.21.0.0/16"]
     }
     ingress {
-        from_port   = 0
+        from_port   = 22
         to_port     = 22
         protocol    = "tcp"
         cidr_blocks = ["${aws_instance.jumpbox.private_ip}/32"]
